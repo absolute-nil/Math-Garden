@@ -101,7 +101,8 @@ const predictImage = () => {
   // Make Prediction
 
   const result = model.predict(X);
-  result.print()
+  
+  const output = result.dataSync()[0];
 
   //output canvas
 //   const outputCanvas = document.createElement("CANVAS");
@@ -116,4 +117,6 @@ const predictImage = () => {
   M.delete();
   X.dispose();
   result.dispose();
+
+  return output;
 };

@@ -23,17 +23,18 @@ prepareCanvas = () => {
 
   document.addEventListener("mousedown", (event) => {
     isPainting = true;
-    currentX = event.clientX - canvas.offsetLeft;
-    currentY = event.clientY - canvas.offsetTop;
+    currentX = event.clientX - canvas.offsetLeft + window.scrollX;
+    currentY = event.clientY - canvas.offsetTop + window.scrollY;
   });
 
   document.addEventListener("mousemove", (event) => {
     if (isPainting) {
       previousX = currentX;
-      currentX = event.clientX - canvas.offsetLeft;
-      console.log(currentY);
+      currentX = event.clientX - canvas.offsetLeft + window.scrollX;
       previousY = currentY;
-      currentY = event.clientY - canvas.offsetTop;
+      currentY = event.clientY - canvas.offsetTop + window.scrollY;
+      console.log(currentY);
+      console.log(scrollY);
       draw();
     }
   });
