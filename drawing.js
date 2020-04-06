@@ -7,8 +7,9 @@ let currentY = 0;
 let previousX = 0;
 let previousY = 0;
 let isPainting = false;
-let canvas;
-let context;
+window.canvas = null;
+window.context = null;
+window.hi = "hi";
 prepareCanvas = () => {
   canvas = document.getElementById("my-canvas");
   context = canvas.getContext("2d");
