@@ -49,8 +49,8 @@ prepareCanvas = () => {
   //touch events
   canvas.addEventListener("touchstart", (event) => {
     isPainting = true;
-    currentX = event.touches[0].clientX - canvas.offsetLeft;
-    currentY = event.touches[0].clientY - canvas.offsetTop + PADDING_TOP;
+    currentX = event.touches[0].clientX - canvas.offsetLeft + window.scrollX;
+    currentY = event.touches[0].clientY - canvas.offsetTop + window.scrollY;
   });
   canvas.addEventListener("touchend", (event) => {
     isPainting = false;
@@ -61,10 +61,10 @@ prepareCanvas = () => {
   document.addEventListener("touchmove", (event) => {
     if (isPainting) {
       previousX = currentX;
-      currentX = event.touches[0].clientX - canvas.offsetLeft;
+      currentX = event.touches[0].clientX - canvas.offsetLeft + window.scrollX;
       console.log(currentY);
       previousY = currentY;
-      currentY = event.touches[0].clientY - canvas.offsetTop + PADDING_TOP;
+      currentY = event.touches[0].clientY - canvas.offsetTop + window.scrollY;
       draw();
     }
   });
